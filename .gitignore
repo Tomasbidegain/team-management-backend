@@ -1,0 +1,30 @@
+# Dependencias de Node.js
+node_modules/
+dist/
+build/
+
+# Archivos de configuración local
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Archivos de logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Archivos de TypeScript compilados
+*.tsbuildinfo
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Carpeta de cache de Jest
+jest-cache/
+jest-test-results.json
+coverage/
+
