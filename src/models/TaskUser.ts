@@ -1,9 +1,10 @@
 import { Model, Table, Column, DataType, ForeignKey, BelongsTo } from "sequelize-typescript";
 import { User } from "./User";
 import { Task } from "./Task";
+import { ITaskUser } from "../interfaces/ITaskUser";
 
 @Table({ tableName: "task_users", createdAt: "created_at", updatedAt: "updated_at"})
-export class TaskUser extends Model<TaskUser> {
+export class TaskUser extends Model<TaskUser> implements ITaskUser {
   @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, primaryKey: true })
   id!: string;
 

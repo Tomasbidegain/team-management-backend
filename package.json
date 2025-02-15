@@ -7,14 +7,17 @@
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
-    "test": "NODE_OPTIONS==--EXPERIMENTAL-vm-modules && npx jest"
+    "test": "NODE_OPTIONS==--EXPERIMENTAL-vm-modules && npx jest",
+    "migrate": "NODE_OPTIONS='--loader ts-node/esm' npx sequelize-cli db:migrate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.2.2",
@@ -26,11 +29,13 @@
     "@types/babel__generator": "^7.6.8",
     "@types/babel__template": "^7.4.4",
     "@types/babel__traverse": "^7.20.6",
+    "@types/bcrypt": "^5.0.2",
     "@types/estree": "^1.0.6",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
     "@types/json-schema": "^7.0.15",
-    "@types/node": "^22.10.5",
+    "@types/jsonwebtoken": "^9.0.8",
+    "@types/node": "^22.13.4",
     "@types/sequelize": "^4.28.20",
     "@types/supertest": "^6.0.2",
     "@types/validator": "^13.12.2",
@@ -40,6 +45,7 @@
     "sequelize-cli": "^6.6.2",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.3"
   }

@@ -6,7 +6,7 @@ import { TaskHistory } from "./TaskHistory";
 import { TaskUser } from "./TaskUser";
 
 @Table({ tableName: "tasks", createdAt: "created_at", updatedAt: "updated_at" })
-export class Task extends Model<Task> {
+export class Task extends Model<Task> implements Task{
   @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, primaryKey: true })
   id!: string;
 

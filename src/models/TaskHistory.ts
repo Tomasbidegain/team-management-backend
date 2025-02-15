@@ -1,9 +1,10 @@
 import { Model, Column, DataType, ForeignKey, BelongsTo, Table } from "sequelize-typescript";
 import { User } from "./User";
 import { Task } from "./Task";
+import { ITaskHistory } from "../interfaces/ITaskHistory";
 
 @Table({ tableName: "task_history", createdAt: "created_at", updatedAt: "updated_at" })
-export class TaskHistory extends Model<TaskHistory> {
+export class TaskHistory extends Model<TaskHistory>  implements ITaskHistory {
   @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, primaryKey: true })
   id!: string;
 

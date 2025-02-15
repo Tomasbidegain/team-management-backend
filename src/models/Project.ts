@@ -7,7 +7,7 @@ import { UserProject } from "./UserProject";
 
 @Table({ tableName: "projects", createdAt: "created_at", updatedAt: "updated_at" })
 
-export class Project extends Model <Project> {
+export class Project extends Model <Project> implements Project {
   @Column({type: DataType.UUID, defaultValue: DataType.UUIDV4, primaryKey: true})
    id!: string;
 

@@ -2,16 +2,25 @@ import { Model, Table, Column, DataType, HasMany, ForeignKey, BelongsTo } from "
 import { User } from "./User";
 import { Project } from "./Project";
 import { ProjectRole } from "./ProjectRole";
+import { IUserProject } from "../interfaces/IUserProject";
 
-@Table({ tableName:"user_projects", createdAt: "created_at", updatedAt: "updated_at" })
-export class UserProject extends Model<UserProject> {
-  @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, primaryKey: true })
+@Table({
+  tableName: "user_projects",
+  createdAt: "created_at",
+  updatedAt: "updated_at",
+})
+export class UserProject extends Model<UserProject> implements IUserProject {
+  @Column({
+    type: DataType.UUID,
+    defaultValue: DataType.UUIDV4,
+    primaryKey: true,
+  })
   id!: string;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.UUID, allowNull: false })
   user_id!: string;
- 
+
   @BelongsTo(() => User)
   user!: User;
 
@@ -28,5 +37,4 @@ export class UserProject extends Model<UserProject> {
 
   @BelongsTo(() => ProjectRole)
   role!: ProjectRole;
-
 }

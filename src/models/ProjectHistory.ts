@@ -3,7 +3,7 @@ import { User } from "./User";
 import { Project } from "./Project";
 
 @Table({ tableName: "project_history", createdAt: "created_at", updatedAt: "updated_at"})
-export class ProjectHistory extends Model <ProjectHistory> {
+export class ProjectHistory extends Model <ProjectHistory> implements ProjectHistory {
   @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, primaryKey: true})
   id!: string
 
