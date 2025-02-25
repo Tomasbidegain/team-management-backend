@@ -1,9 +1,11 @@
 import { Model, Table, Column, DataType, ForeignKey, BelongsTo } from "sequelize-typescript";
 import { User } from "./User";
 import { Project } from "./Project";
+import { historyActions } from "../interfaces/enums/historyActions";
+import { IProjectHistory } from "../interfaces/models/IProjectHistory";
 
 @Table({ tableName: "project_history", createdAt: "created_at", updatedAt: "updated_at"})
-export class ProjectHistory extends Model <ProjectHistory> implements ProjectHistory {
+export class ProjectHistory extends Model <IProjectHistory> implements IProjectHistory {
   @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, primaryKey: true})
   id!: string
 
@@ -16,8 +18,8 @@ export class ProjectHistory extends Model <ProjectHistory> implements ProjectHis
   @Column({ type: DataType.TEXT })
   new_value!: string;
   
-  @Column({ type: DataType.DATE, allowNull: false })
-  changed_at!: Date;
+  @Column({ type: DataType.ENUM(...Object.values(historyActions)), allowNull: false })
+  action!: historyActions; 
 
   @ForeignKey(() => User)
   @Column({ type: DataType.UUID, allowNull: false })

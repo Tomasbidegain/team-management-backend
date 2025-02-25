@@ -1,4 +1,5 @@
 import { QueryInterface, DataTypes } from "sequelize";
+import { historyActions } from "../interfaces/enums/historyActions";
 
 export default {
   async up(queryInterface: QueryInterface) {
@@ -21,9 +22,9 @@ export default {
         allowNull: false,
         type: DataTypes.TEXT,
       },
-      changed_at: {
+      action: {
         allowNull: false,
-        type: DataTypes.DATE,
+        type: DataTypes.ENUM(...Object.values(historyActions))
       },
       user_id: {
         allowNull: false,
@@ -32,6 +33,16 @@ export default {
           model: "users",
           key: "id",
         },
+      },
+      created_at: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+      updated_at: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     });
   },

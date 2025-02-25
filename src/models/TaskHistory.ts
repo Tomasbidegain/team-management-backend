@@ -1,10 +1,11 @@
 import { Model, Column, DataType, ForeignKey, BelongsTo, Table } from "sequelize-typescript";
 import { User } from "./User";
 import { Task } from "./Task";
-import { ITaskHistory } from "../interfaces/ITaskHistory";
+import { ITaskHistory } from "../interfaces/models/ITaskHistory";
+import { historyActions } from "../interfaces/enums/historyActions";
 
 @Table({ tableName: "task_history", createdAt: "created_at", updatedAt: "updated_at" })
-export class TaskHistory extends Model<TaskHistory>  implements ITaskHistory {
+export class TaskHistory extends Model<ITaskHistory>  implements ITaskHistory {
   @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4, primaryKey: true })
   id!: string;
 
@@ -17,8 +18,8 @@ export class TaskHistory extends Model<TaskHistory>  implements ITaskHistory {
   @Column({ type: DataType.TEXT })
   new_value!: string;
 
-  @Column({ type: DataType.DATE, allowNull: false })
-  changed_at!: Date;
+  @Column({ type: DataType.ENUM(...Object.values(historyActions)), allowNull: false })
+  action!: historyActions;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.UUID, allowNull: false })

@@ -9,6 +9,9 @@ export default {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
+      description: {
+        type: DataTypes.STRING,
+      },
       name: {
         allowNull: false,
         type: DataTypes.STRING,
@@ -45,6 +48,16 @@ export default {
         },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
+      },
+      created_at: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+      updated_at: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     });
   },

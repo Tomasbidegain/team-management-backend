@@ -13,6 +13,16 @@ export default {
         allowNull: false,
         type: DataTypes.STRING,
       },
+      created_at: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+      updated_at: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
     });
   },
 

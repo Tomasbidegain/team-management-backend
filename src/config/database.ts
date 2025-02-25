@@ -1,13 +1,11 @@
 import { Sequelize } from 'sequelize-typescript'
-import dotenv from 'dotenv';
-
-dotenv.config();
+import { DB_HOST, DB_NAME, DB_PASSWORD, DB_USER } from '.';
 
 const sequelize = new Sequelize({
-  database: process.env.DB_NAME || '',
-  username: process.env.DB_USER || '',
-  password: process.env.DB_PASSWORD || '',
-  host: process.env.DB_HOST || 'localhost',
+  database: DB_NAME || '',
+  username: DB_USER || '',
+  password: DB_PASSWORD || '',
+  host: DB_HOST || 'localhost',
   dialect: "postgres",
   storage: "database.postgres",
   models: [__dirname + "/../models"], // Directorio de modelos

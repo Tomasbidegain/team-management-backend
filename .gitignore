@@ -2,6 +2,7 @@
 node_modules/
 dist/
 build/
+yarn.lock
 
 # Archivos de configuración local
 .env

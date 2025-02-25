@@ -4,25 +4,34 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "nodemon dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
     "test": "NODE_OPTIONS==--EXPERIMENTAL-vm-modules && npx jest",
-    "migrate": "NODE_OPTIONS='--loader ts-node/esm' npx sequelize-cli db:migrate"
+    "migrate": "npx sequelize-cli db:migrate --config config.js",
+    "migrate-undo": "npx sequelize-cli db:migrate:undo:all --config config.js",
+    "seed": "npx sequelize-cli db:seed:all --config config.js",
+    "seed-undo": "npx sequelize-cli db:seed:undo:all --config config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.17",
     "bcrypt": "^5.1.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.5",
-    "sequelize-typescript": "^2.1.6"
+    "sequelize-typescript": "^2.1.6",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@types/babel__core": "^7.20.5",

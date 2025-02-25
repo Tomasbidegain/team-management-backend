@@ -1,7 +1,5 @@
 import { Dialect } from "sequelize";
-import dotenv from "dotenv";
-
-dotenv.config();
+import { DB_HOST, DB_NAME, DB_PASSWORD, DB_USER } from ".";
 
 interface DBConfigAttributes {
   username: string;
@@ -13,10 +11,10 @@ interface DBConfigAttributes {
 
 const config: { [key: string]: DBConfigAttributes } = {
   development: {
-    username: process.env.DB_USER || "",
-    password: process.env.DB_PASSWORD || "",
-    database: process.env.DB_NAME || "",
-    host: process.env.DB_HOST || "127.0.0.1",
+    username: DB_USER || "",
+    password: DB_PASSWORD || "",
+    database: DB_NAME || "",
+    host: DB_HOST || "127.0.0.1",
     dialect: "postgres" as Dialect,
   },
   // Configuración para test y producción...

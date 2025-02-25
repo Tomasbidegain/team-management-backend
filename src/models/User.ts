@@ -4,10 +4,10 @@ import { TaskHistory } from "./TaskHistory";
 import { ProjectHistory } from "./ProjectHistory";
 import { TaskUser } from "./TaskUser";
 import { UserProject } from "./UserProject";
-import { IUser } from "../interfaces/IUser";
+import { IUser } from "../interfaces/models/IUser";
 
 @Table({ tableName: "users", createdAt: "created_at", updatedAt: "updated_at" })
-export class User extends Model<User> implements IUser {
+export class User extends Model<IUser> implements IUser {
   @Column({
     type: DataType.UUID,
     defaultValue: DataType.UUIDV4,
@@ -26,6 +26,12 @@ export class User extends Model<User> implements IUser {
 
   @Column({ type: DataType.STRING, allowNull: false })
   password!: string;
+
+  @Column({ field: "created_at", type: DataType.DATE })
+  created_at!: Date;
+
+  @Column({ field: "updated_at", type: DataType.DATE })
+  updated_at!: Date;
 
   @ForeignKey(() => Role)
   @Column({ type: DataType.UUID, allowNull: false })

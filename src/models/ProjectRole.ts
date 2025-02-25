@@ -9,6 +9,12 @@ export class ProjectRole extends Model<ProjectRole> implements ProjectRole {
   @Column({ type: DataType.STRING, allowNull: false })
   name!: string;
 
+  @Column({ field: "created_at", type: DataType.DATE })
+  created_at!: Date;
+
+  @Column({ field: "updated_at", type: DataType.DATE })
+  updated_at!: Date;
+
   @HasMany(() => UserProject)
   user_projects!: UserProject[]
 }

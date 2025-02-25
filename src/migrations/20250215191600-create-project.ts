@@ -14,7 +14,6 @@ export default {
         type: DataTypes.STRING,
       },
       description: {
-        allowNull: false,
         type: DataTypes.STRING,
       },
       start_date: {
@@ -39,6 +38,16 @@ export default {
           model: "project_types",
           key: "id",
         },
+      },
+      created_at: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+      updated_at: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     });
   },
